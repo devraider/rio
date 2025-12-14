@@ -4,8 +4,8 @@ SRC_DIR = src
 BUILD_DIR = build
 TARGET = $(BUILD_DIR)/main
 
-SOURCES = $(SRC_DIR)/main.c
-OBJECTS = $(BUILD_DIR)/main.o
+SOURCES = $(SRC_DIR)/main.c $(SRC_DIR)/rio.c
+OBJECTS = $(BUILD_DIR)/main.o $(BUILD_DIR)/rio.o
 
 .PHONY: all clean run
 
