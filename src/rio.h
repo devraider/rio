@@ -14,4 +14,8 @@ typedef struct
     char rio_buf[RIO_BUFSIZE]; /* Internal buffer */
 } rio_t;
 
+/* Unbuffered I/O functions */
+ssize_t rio_readn(int fd, void *usrbuf, size_t n);
+ssize_t rio_writen(int fd, void *usrbuf, size_t n);
+
 #endif
