@@ -1,15 +1,13 @@
 #include "rio.h"
 #include <stdio.h>
 
-#define MAXLINE 8192
-
 int main(int argc, char **argv)
 {
     int n;
-    char buf[MAXLINE];
+    char buf[RIO_BUFSIZE];
 
     // Read from stdin and write to stdout using rio_readn
-    while ((n = rio_readn(STDIN_FILENO, buf, MAXLINE)) > 0)
+    while ((n = rio_readn(STDIN_FILENO, buf, RIO_BUFSIZE)) > 0)
     {
         if (rio_writen(STDOUT_FILENO, buf, n) != n)
         {
