@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     // Read from stdin and write to stdout using rio_readn
     while ((n = rio_readn(STDIN_FILENO, buf, MAXLINE)) > 0)
     {
-        if (write(STDOUT_FILENO, buf, n) != n)
+        if (rio_writen(STDOUT_FILENO, buf, n) != n)
         {
             fprintf(stderr, "write error\n");
             return 1;
