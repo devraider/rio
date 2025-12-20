@@ -126,3 +126,36 @@ ssize_t Rio_readnb(rio_t *rp, void *usrbuf, size_t n)
     }
     return rc;
 }
+
+ssize_t Rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen)
+{
+    ssize_t rc;
+
+    if ((rc = rio_readlineb(rp, usrbuf, maxlen)) < 0)
+    {
+        fprintf(stderr, "Rio_readlineb error\n");
+        exit(1);
+    }
+    return rc;
+}
+
+ssize_t Rio_readn(int fd, void *usrbuf, size_t n)
+{
+    ssize_t rc;
+
+    if ((rc = rio_readn(fd, usrbuf, n)) < 0)
+    {
+        fprintf(stderr, "Rio_readn error\n");
+        exit(1);
+    }
+    return rc;
+}
+
+void Rio_writen(int fd, void *usrbuf, size_t n)
+{
+    if (rio_writen(fd, usrbuf, n) != n)
+    {
+        fprintf(stderr, "Rio_writen error\n");
+        exit(1);
+    }
+}
