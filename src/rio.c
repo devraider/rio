@@ -50,3 +50,10 @@ ssize_t rio_writen(int fd, void *usrbuf, size_t n)
     }
     return n;
 }
+
+void rio_readinitb(rio_t *rp, int fd)
+{
+    rp->rio_fd = fd;
+    rp->rio_cnt = 0;
+    rp->rio_bufptr = rp->rio_buf;
+}
