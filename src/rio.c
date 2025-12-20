@@ -108,3 +108,8 @@ ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen)
     *bufp = 0;
     return n - 1;
 }
+
+void Rio_readinitb(rio_t *rp, int fd)
+{
+    rio_readinitb(rp, fd);
+}
