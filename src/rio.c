@@ -1,5 +1,6 @@
 #include "rio.h"
 #include <errno.h>
+#include <stdio.h>
 
 ssize_t rio_readn(int fd, void *usrbuf, size_t n)
 {
@@ -112,4 +113,16 @@ ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen)
 void Rio_readinitb(rio_t *rp, int fd)
 {
     rio_readinitb(rp, fd);
+}
+
+ssize_t Rio_readnb(rio_t *rp, void *usrbuf, size_t n)
+{
+    ssize_t rc;
+
+    if ((rc = rio_readnb(rp, usrbuf, n)) < 0)
+    {
+        fprintf(stderr, "Rio_readnb error\n");
+        exit(1);
+    }
+    return rc;
 }
