@@ -4,22 +4,15 @@
 int main(int argc, char **argv)
 {
     int n;
+    rio_t rio;
     char buf[RIO_BUFSIZE];
 
+    Rio_readinitb(&rio, STDIN_FILENO);
     // Read from stdin and write to stdout using rio_readn
-    while ((n = rio_readn(STDIN_FILENO, buf, RIO_BUFSIZE)) > 0)
+    while ((n = Rio_readlineb(&rio, buf, RIO_BUFSIZE)) != 0)
     {
-        if (rio_writen(STDOUT_FILENO, buf, n) != n)
-        {
-            fprintf(stderr, "write error\n");
-            return 1;
-        }
-    }
 
-    if (n < 0)
-    {
-        fprintf(stderr, "rio_readn error\n");
-        return 1;
+        Rio_writen(STDOUT_FILENO, buf, n);
     }
 
     return 0;
